@@ -85,10 +85,10 @@ docutils @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/docut
 entrypoints @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/entrypoints_1699242128888/work
 et-xmlfile @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/et_xmlfile_1699245044998/work
 executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
+fastapi==0.115.8
 fastjsonschema @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/python-fastjsonschema_1699238535414/work
 filelock @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/filelock_1701804468261/work
 flake8 @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_8fyuzhayos/croot/flake8_1708965272166/work
-Flask @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_b6zka5i2cn/croot/flask_1716545886197/work
 flatbuffers==25.2.10
 fonttools @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_60c8ux4mkl/croot/fonttools_1713551354374/work
 frozendict @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_8b0cest_id/croot/frozendict_1713194839836/work
@@ -98,6 +98,7 @@ gensim @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/gensim_
 gitdb @ file:///tmp/build/80754af9/gitdb_1617117951232/work
 GitPython @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/gitpython_1699254434447/work
 greenlet @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_516imz09pb/croot/greenlet_1702059966336/work
+h11==0.14.0
 h5py @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_4ed_3jzwco/croot/h5py_1715094733352/work
 HeapDict @ file:///Users/ktietz/demo/mc3/conda-bld/heapdict_1630598515714/work
 holoviews @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_41wcnzxzhr/croot/holoviews_1718294646103/work
@@ -319,6 +320,7 @@ spyder @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_c2x
 spyder-kernels @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_42vj8220mm/croot/spyder-kernels_1707937716590/work
 SQLAlchemy @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_2cq7wud7iy/croot/sqlalchemy_1718378182237/work
 stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
+starlette==0.45.3
 statsmodels @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_af8vmuwbis/croot/statsmodels_1718381196260/work
 streamlit @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_6b3n91zraw/croot/streamlit_1710262512332/work
 sympy==1.13.1
@@ -352,6 +354,7 @@ ujson @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_dexx
 unicodedata2 @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_a3epjto7gs/croot/unicodedata2_1713212955584/work
 Unidecode @ file:///tmp/build/80754af9/unidecode_1614712377438/work
 urllib3==2.2.3
+uvicorn==0.34.0
 w3lib @ file:///Users/builder/cbouss/perseverance-python-buildout/croot/w3lib_1709223508304/work
 watchdog @ file:///Users/builder/cbouss/crwatchdog/watchdog_1717177010913/work
 wcwidth==0.2.13
