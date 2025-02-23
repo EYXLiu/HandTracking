@@ -7,6 +7,6 @@ class DataLoader:
         x, y, path = self.data[self.current]
             
         self.current += 1
-        if self.current > len(self.data):
+        if self.current >= len(self.data):
             self.current = 0
         return x, y, path
