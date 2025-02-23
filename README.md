@@ -1,4 +1,4 @@
-# Hand Tracking CNN, a replacement for the MediaPipe Hand Tracking that hasn't updated to the latest Python3.12 version
+# Hand Tracking CNN, a replacement for the MediaPipe Hand Tracking that's been deprecated since Python3.12
 Made with Python and Pytorch <br />
 This is a Convolutional Neural Network created to replicate the MediaPipe hands ML model that has deprecated. <br />
 `dataset.py` reads the data from the folder into a subclass of the Dataset class from pytorch, overloading the \_\_len\_\_ and \_\_getitem\_\_ functions. It reads the images and files using cv2, os, and json, and converts it to properly formatted data, a \[224, 224, 3\] tensor as an input and a \[42\] tensor for an output. (x, y for 21 points on the hand) <br />
