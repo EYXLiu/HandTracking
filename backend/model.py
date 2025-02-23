@@ -42,3 +42,11 @@ class VisionCNN(nn.Module):
             loss = F.mse_loss(x, targets)
         
         return x, loss
+    
+    def predict(self, x):
+        x = self.conv_layers(x)
+        x = self.linear_layers(x)
+        x = x.sigmoid()
+        x = x * 224
+        
+        return x

@@ -4,9 +4,21 @@ from pydantic import BaseModel
 
 import torch
 from model import VisionCNN
+from dataclasses import dataclass
+
+@dataclass
+class VisionConfig:
+    input_layers: int = 3
+    filter_1: int = 32
+    filter_2: int = 64
+    filter_3: int = 128
+    
+    linear_flatten: int = 128 * 28 * 28
+    linear_layer: int = 512
+    output_layer: int = 42
 
 model_path = "model.pth"
-model = VisionCNN()
+model = VisionCNN(VisionConfig)
 model.load_state_dict(torch.load(model_path))
 model.eval()
 
@@ -32,7 +44,7 @@ def predict(data: InputData):
     tens = torch.tensor(data.features, dtype=torch.float32)
     
     with torch.no_grad():
-        output = model(tens)
+        output = model.predict(tens)
     
     return output
 

@@ -48,10 +48,6 @@ class HandDetector():
                 lmList.append([id, cx, cy])
                 
         return lmList
-            
-
-    
-
 
 def main():
     cap = cv2.VideoCapture(0)
