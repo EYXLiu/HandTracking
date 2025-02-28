@@ -19,7 +19,9 @@ class VisionConfig:
 
 model_path = "model.pth"
 model = VisionCNN(VisionConfig)
-model.load_state_dict(torch.load(model_path))
+state_dict = torch.load(model_path, weights_only=True)
+new_state_dict = {k.replace("_orig_mod.", ""): v for k, v in state_dict.items()}
+model.load_state_dict(new_state_dict)
 model.eval()
 
 app = FastAPI()
@@ -39,12 +41,12 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-@app.get("/api/predict")
+@app.post("/api/predict")
 def predict(data: InputData):
     tens = torch.tensor(data.features, dtype=torch.float32)
     
     with torch.no_grad():
-        output = model.predict(tens)
+        output = model.predict(tens).tolist()
     
-    return output
+    return {'prediction': output}
 
