@@ -16,6 +16,9 @@ Another interesting note is that, due to the data, after a few iterations the mo
 # Note for the future
 The training data does not seem to fit the requirement needed, probably need better data and train it for much longer. The model, after learning from ~10,000 images, seems to predict the location as clustered around the center, and shifts accordingly to the hand, but does not move to the outer areas of the camera when given the input. More training is needed obviously, but the trend is interesting. It doesn't seem to recognize hands yet, but does properly recognize the general clustering of the hand and the rough finger shape. Better data might be required, maybe the Freihand database would have better images. A better CPU/GPU and more storage would be required. Another way would be to increase the dropout rate from 0.5 to 0.7, which would mean it wouldn't be overfitting to the training data and might learn to classify hands over getting a general shape from the images without understanding. <br />
 
+# Update
+Model seemes to start understanding hand, as using `view.py` shows that the points are moving when hands are moving. After ~5000 more training steps, it also seems to not generalize to middle and is more spread out. However, not enough training shows that the model does not seem to understand the actual hand and its roughly guessing based on the training set. Still a lot more training is needed. <br />
+
 # Data
 The data is taken from a Kaggle dataset called "Hand Keypoint Dataset 26K". It is by Rion Dsilva and contains 26,768 images of hands using the MediaPipe library to get the points. <br />
 The dataset can be found here: https://www.kaggle.com/datasets/riondsilva21/hand-keypoint-dataset-26k <br />
