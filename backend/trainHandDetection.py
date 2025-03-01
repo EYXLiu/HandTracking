@@ -46,48 +46,45 @@ optimizer = torch.optim.AdamW(m.parameters(), lr=1e-4)
 max_steps = 2000
 val_steps = 20
 
-training = True
-
-if training:
-    for i in range(max_steps):
-        t0 = time.time()
-        last_step = i == max_steps - 1
-        if (i != 0 and i % 100 == 0) or last_step:
-            s = time.time()
-            model.eval()
-            with torch.no_grad():
-                val_loss_accum = 0
-                for _ in range(val_steps):
-                    x, y, p = test_loader.next_batch()
-                    pred, loss = model(x, y)
-                    loss = loss / val_steps
-                    val_loss_accum += loss.detach()
-            
-            print(f"Validation Loss at step {i}: {val_loss_accum:.6f} | time: {(time.time() - s) * 1000:2f}ms")
+for i in range(max_steps):
+    t0 = time.time()
+    last_step = i == max_steps - 1
+    if (i != 0 and i % 100 == 0) or last_step:
+        s = time.time()
+        model.eval()
+        with torch.no_grad():
+            val_loss_accum = 0
+            for _ in range(val_steps):
+                x, y, p = test_loader.next_batch()
+                pred, loss = model(x, y)
+                loss = loss / val_steps
+                val_loss_accum += loss.detach()
         
-        model.train()
-        optimizer.zero_grad()
-        
-        x, y, p = train_loader.next_batch()
-        pred, loss = model(x, y)
-        loss.backward()
-        
-        norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
-        
-        optimizer.step()
-        t1 = time.time()
-        
-        dt = (t1 - t0) * 1000
-        
-        if (i % 50 == 0): 
-            print(f"step: {i} | loss: {loss.item():.6f} | norm: {norm:.4f} | time: {dt:.2f}ms")
-        
-    torch.save(model.state_dict(), 'model.pth')
+        print(f"Validation Loss at step {i}: {val_loss_accum:.6f} | time: {(time.time() - s) * 1000:2f}ms")
+    
+    model.train()
+    optimizer.zero_grad()
+    
+    x, y, p = train_loader.next_batch()
+    pred, loss = model(x, y)
+    loss.backward()
+    
+    norm = torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+    
+    optimizer.step()
+    t1 = time.time()
+    
+    dt = (t1 - t0) * 1000
+    
+    if (i % 50 == 0): 
+        print(f"step: {i} | loss: {loss.item():.6f} | norm: {norm:.4f} | time: {dt:.2f}ms")
+    
+torch.save(model.state_dict(), 'model.pth')
 
 
 x, y, path = test_loader.next_batch()
 pred, loss = model(x, y)
-print(loss.detach())
+print(f"loss: {loss.item():.6f}")
 img = cv2.imread(path)
 img = DisplayImg(img, pred)
 cv2.imshow("img", img)
