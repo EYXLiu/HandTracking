@@ -25,6 +25,7 @@ import random
 
 model = VisionCNN(VisionConfig)
 if os.path.exists('model.pth'):
+    print("exists")
     state_dict = torch.load('model.pth', weights_only=True)
     new_state_dict = {k.replace("_orig_mod.", ""): v for k, v in state_dict.items()}
     model.load_state_dict(new_state_dict)
