@@ -26,11 +26,17 @@ class YOLO(nn.Modele):
         )
         
     def forward(self, x):
-        x = self.cnn(x), 
+        x = self.cnn(x)
         x = self.detect(x)
         x = x.view(-1, self.S, self.S, self.B * 5 + self.C)
         return x
     
+    def predict(self, x):
+        x = self.cnn(x), 
+        x = self.detect(x)
+        x = x.view(-1, self.S, self.S, self.B * 5 + self.C)
+        x = x.sigmoid()
+        
     
 def YOLO_loss(predictions, targets, S, B, num_classes):
     lambda_coord = 5
