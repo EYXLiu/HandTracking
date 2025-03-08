@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import torch.functional as F 
 
 class YOLO(nn.Modele):
     def __init__(self, num_classes, S, B):
@@ -41,7 +42,7 @@ def YOLO_loss(predictions, targets, S, B, num_classes):
     coord_loss = lambda_coord * torch.sum((predictions[...,:2] - targets[...,:2]) ** 2) # MSE for bounding box
     obj_loss = torch.sum((predictions[obj_mask, 4] - targets[obj_mask, 4]) ** 2) # MSE for confidence of object
     noobj_loss = lambda_noobj * torch.sum((predictions[noobj_mask, 4] - targets[noobj_mask, 4]) ** 2) # MSE if theres no object
-    class_loss = torch.sum((predictions[...,5:] - targets[...,5:]) ** 2) 
+    class_loss = F.cross_entropy(predictions[...,5:], targets[...,5:])
     
     return coord_loss + obj_loss + noobj_loss + class_loss
     
